@@ -4,7 +4,7 @@ from classes.hillClimb import HillClimb
 
 def main():
     # Solution handling
-    solution = Solution(5, 5)
+    solution = Solution(100, 100)
     solution.start()
     solution.print()
 

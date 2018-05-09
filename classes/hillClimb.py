@@ -23,7 +23,7 @@ class HillClimb(Optimizer):
             print(abs(oldEval - newEval) )
             print(error)
             if(self.solution.content != newSolution.content and oldEval > newEval):
-                self.solution = newSolution
+                self.solution = copy.deepcopy(newSolution)
 
             iterations += 1
 
