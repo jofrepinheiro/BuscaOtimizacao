@@ -7,6 +7,8 @@ class Solution:
         self.dimension = dimension
         self.content = []
 
+    def __len__(self):
+        return len(self.content)
 
     def start(self):
         for x in range(0, self.dimension):

@@ -12,7 +12,7 @@ class Evaluator:
         for x in range(0, len(solution)):
             sum += solution[x] * solution[x]
         sum += bias
-        return sum <= self.error
+        return sum
 
 
     def shiftedRosenbrock(self, solution, bias = 0 ):
@@ -24,7 +24,7 @@ class Evaluator:
 
         sum += bias
 
-        return sum <= self.error
+        return sum
 
     
     def shiftedRastrign(self, solution, bias = 0):
@@ -36,5 +36,4 @@ class Evaluator:
         
         sum += bias
 
-        return sum <= self.error
-        
+        return sum        
