@@ -4,18 +4,21 @@ from classes.hillClimb import HillClimb
 
 def main():
     # Solution handling
-    solution = Solution(100, 100)
+    solution = Solution(30, 5)
     solution.start()
     solution.print()
 
-    # Evaluation
-    evaluator = Evaluator()
-    print(evaluator.shiftedSphere(solution.content, 0.3))
-    print(evaluator.shiftedRosenbrock(solution.content, 0.3))
-    print(evaluator.shiftedRastrign(solution.content, 0.3))
+    # # Evaluation
+    # evaluator = Evaluator()
+    # print(evaluator.shiftedSphere(solution.content, 0.3))
+    # print(evaluator.shiftedRosenbrock(solution.content, 0.3))
+    # print(evaluator.shiftedRastrign(solution.content, 0.3))
 
-    # HillClimb
-    optimizer = HillClimb(solution, evaluator, 0, 100)
-    print(optimizer.run())
+    # # HillClimb
+    # optimizer = HillClimb(solution, evaluator, 0, 100)
+    # print(optimizer.run())
+    for i in range(0,10):
+        solution.tweak(1, 2)
+        solution.print()
 
 main()
