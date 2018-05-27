@@ -7,21 +7,18 @@ def main():
     solution = Solution(30, 5)
     solution.start()
     solution.print()
-
-    # # TWEAK TEST
-    for i in range(0,10):
-        solution.tweak(1, 2)
-        solution.print()
     
     # Evaluation
     evaluator = Evaluator()
-    print(evaluator.shiftedSphere(solution.content, 0.3))
-    print(evaluator.shiftedRosenbrock(solution.content, 0.3))
-    print(evaluator.shiftedRastrign(solution.content, 0.3))
 
     # HillClimb
-    optimizer = HillClimb(solution, evaluator, 0, 100)
-    print(optimizer.run())
+    optimizer = HillClimb(100)
     
+    # print(evaluator.shiftedSphere)
+
+    optimizer.hillClimb(solution, evaluator.shiftedSphere, 1, 0.5)
+    # print(optimizer.run())
+
+
 
 main()

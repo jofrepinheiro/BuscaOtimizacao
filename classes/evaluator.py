@@ -10,7 +10,7 @@ class Evaluator:
         "Shifted Sphere function for benchmarking"
         sum = 0
         for x in range(0, len(solution)):
-            sum += solution[x] * solution[x]
+            sum += solution.content[x] * solution.content[x]
         sum += bias
         return sum
 
@@ -20,7 +20,7 @@ class Evaluator:
 
         sum = 0
         for x in range(0, len(solution) - 2):
-            sum += (100 * ((solution[x]**2) - solution[x + 1])**2) + (solution[x] - 1)**2
+            sum += (100 * ((solution.content[x]**2) - solution.content[x + 1])**2) + (solution.content[x] - 1)**2
 
         sum += bias
 
@@ -32,7 +32,7 @@ class Evaluator:
 
         sum = 0
         for x in range(0, len(solution) - 1):
-            sum += solution[x]**2 - (10 * math.cos(2 * math.pi * solution[x]) + 10)
+            sum += solution.content[x]**2 - (10 * math.cos(2 * math.pi * solution.content[x]) + 10)
         
         sum += bias
 
@@ -46,10 +46,10 @@ class Evaluator:
         product = 1
 
         for x in range(0, len(solution) - 1):
-            sum += solution[x]**2 / 4000
+            sum += solution.content[x]**2 / 4000
         
-        for y in range(0, len(solution) - 1):
-            product *= math.cos(solution[y] / math.sqrt(y))
+        for y in range(0, len(solution.content) - 1):
+            product *= math.cos(solution.content[y] / math.sqrt(y))
         
         return sum - product + 1 + bias
             

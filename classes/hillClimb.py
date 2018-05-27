@@ -4,39 +4,23 @@ import copy
 
 class HillClimb(Optimizer):
     
-    def run(self):
+    def hillClimb(self, solution, benchmark, p, r):
         iterations = 0
-        # newSolution = self.solution
-        error = False 
+        print(solution)
+        print(benchmark)
+        s = copy.deepcopy(solution)
+        while True:
+            newSolution = copy.deepcopy(s)
+            newSolution.tweak(p, r)
 
-        while (iterations <= self.iterationsLimit or not(error)):
-            newSolution = copy.deepcopy(self.solution) 
-            newSolution = self.tweak(newSolution)
+            print(newSolution)
+            print(solution)
+            x = benchmark(s)
+            print(x)
 
-            print(self.solution.content, newSolution.content)
-             
-            oldEval = self.evaluator.shiftedSphere(self.solution.content)
-
-            newEval = self.evaluator.shiftedSphere(newSolution.content)
-
-            error = abs(oldEval - newEval) <= self.error
-            print(abs(oldEval - newEval) )
-            print(error)
-            if(self.solution.content != newSolution.content and oldEval > newEval):
-                self.solution = copy.deepcopy(newSolution)
-
+            if benchmark(s) > benchmark(newSolution):
+                s = solution
             iterations += 1
 
-        return iterations
-
-    def tweak(self, solution):
-        "Tweaks the solution by decreasing a number in a random position."
-        index = random.randint(0, len(solution.content) - 1)
-        
-        if solution.content[index] > 0:
-            solution.content[index] = solution.content[index] - 1
-            
-        if solution.content[index] < 0:
-            solution.content[index] = solution.content[index] + 1
-
-        return solution
+            if iterations >= self.iterationLimit:
+                break
