@@ -1,25 +1,26 @@
 from classes.solution import Solution
 from classes.evaluator import Evaluator
 from classes.hillClimb import HillClimb
+from classes.simAnealling import SimulatedAnnealing
 
 def main():
 
-    # Solution handling
-    solution = Solution(100, 100)
-    solution.start()
-    # solution.print()
-    
-    # Evaluation
+    # Evaluator
     evaluator = Evaluator()
 
+
+
     # HillClimb
-    optimizer = HillClimb(100000)
-    
-    # # print(evaluator.shiftedSphere)
+    # solution = Solution(100, 50)
+    # solution.start()
+    # optimizer = HillClimb(100000)
+    # optimizer.run(solution, evaluator.shiftedSphere, 1, 1)
 
-    optimizer.hillClimb(solution, evaluator.shiftedSphere, 1, 5)
-    # print(optimizer.run())
-
+    # Simulated Annealing
+    solution = Solution(100, 100)
+    solution.start()
+    optimizer = SimulatedAnnealing(100000, 0)
+    optimizer.run(solution, evaluator.shiftedSphere, 1, 3, 100)
 
 
 main()

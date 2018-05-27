@@ -2,11 +2,10 @@ from .optimizer import Optimizer
 from .log import Log
 import random
 import copy
-import datetime
 
 class HillClimb(Optimizer):
     
-    def hillClimb(self, solution, benchmark, p, r, optimal = 0):
+    def run(self, solution, benchmark, p, r, optimal = 0):
         iterations = 0
 
         s = copy.deepcopy(solution)
